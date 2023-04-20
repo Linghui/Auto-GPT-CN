@@ -24,17 +24,16 @@ def build_default_prompt_generator() -> PromptGenerator:
 
     # Add constraints to the PromptGenerator object
     prompt_generator.add_constraint(
-        "~4000 word limit for short term memory. Your short term memory is short, so"
-        " immediately save important information to files."
+        "~4000字的短期记忆限制。你的短期记忆是短暂的，所以立即将重要信息保存到文件中."
     )
     prompt_generator.add_constraint(
-        "If you are unsure how you previously did something or want to recall past"
-        " events, thinking about similar events will help you remember."
+        "如果你不确定你以前是如何做某事的，或者想要回忆过去的事情，想想类似的事件会帮助你思考."
     )
-    prompt_generator.add_constraint("No user assistance")
+    prompt_generator.add_constraint("没有用户协助")
     prompt_generator.add_constraint(
-        'Exclusively use the commands listed in double quotes e.g. "command name"'
+        '只使用双引号中列出的命令，例如"命令名称"'
     )
+    prompt_generator.add_constraint('必须用中文回答')
 
     # Define the command list
     commands = [
@@ -48,30 +47,28 @@ def build_default_prompt_generator() -> PromptGenerator:
 
     # Add resources to the PromptGenerator object
     prompt_generator.add_resource(
-        "Internet access for searches and information gathering."
+        "上网搜索和收集信息。"
     )
-    prompt_generator.add_resource("Long Term memory management.")
+    prompt_generator.add_resource("使用内存长期管理。")
     prompt_generator.add_resource(
-        "GPT-3.5 powered Agents for delegation of simple tasks."
+        "GPT-3.5支持的代理，用于简单任务的委托。"
     )
-    prompt_generator.add_resource("File output.")
+    prompt_generator.add_resource("输出文件.")
 
     # Add performance evaluations to the PromptGenerator object
     prompt_generator.add_performance_evaluation(
-        "Continuously review and analyze your actions to ensure you are performing to"
-        " the best of your abilities."
+        "不断地回顾和分析你的行为，以确保你发挥出了最好的能力。"
     )
     prompt_generator.add_performance_evaluation(
-        "Constructively self-criticize your big-picture behavior constantly."
+        "经常建设性地自我批评你的整体行为。"
     )
     prompt_generator.add_performance_evaluation(
-        "Reflect on past decisions and strategies to refine your approach."
+        "反思过去的决定和策略，以完善你的方法。"
     )
     prompt_generator.add_performance_evaluation(
-        "Every command has a cost, so be smart and efficient. Aim to complete tasks in"
-        " the least number of steps."
+        "每个命令都有成本，所以要聪明和高效。以最少的步骤完成任务为目标。"
     )
-    prompt_generator.add_performance_evaluation("Write all code to a file.")
+    prompt_generator.add_performance_evaluation("把所有代码输出到文件")
     return prompt_generator
 
 
@@ -88,7 +85,7 @@ def construct_main_ai_config() -> AIConfig:
         logger.typewriter_log("Goals:", Fore.GREEN, f"{config.ai_goals}")
     elif config.ai_name:
         logger.typewriter_log(
-            "Welcome back! ",
+            "欢迎回来! ",
             Fore.GREEN,
             f"Would you like me to return to being {config.ai_name}?",
             speak_text=True,
