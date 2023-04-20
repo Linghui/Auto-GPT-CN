@@ -13,6 +13,8 @@
 **Download the latest `stable` release from here: https://github.com/Significant-Gravitas/Auto-GPT/releases/latest.**
 The `master` branch may often be in a **broken** state.
 
+# Auto-GPT-CN:  尝试改一个中文版本
+
 <hr/>
 
 
